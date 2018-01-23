@@ -24,8 +24,8 @@
 
 <div class="botao-responder">RESPONDER</div>
 
-<div class="feedback-correto feedbacks"> Correto !</div>
-<div class="feedback-incorreto feedbacks"> Incorreto! </div>
+<div class="feedback-correto feedbacks"> Você acertou todas as questões !</div>
+<div class="feedback-incorreto feedbacks"> Você errou uma das questões! </div>
 	
 </div>
 
@@ -81,7 +81,18 @@ $("#vf4").css("background-color","#2BBBAD");
 else{
 $("#vf4").css("background-color","#E95354");
 }
+
+if(respostaDaQuestaoInteira==respostaFinal){
+$(".feedbacks").hide();
+$(".feedback-correto").fadeIn();
+}
+else{
+$(".feedbacks").hide();
+$(".feedback-incorreto").fadeIn();	
+}
 });
+
+
 
 });	
 

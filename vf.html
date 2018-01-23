@@ -1,13 +1,25 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 
-<div class="container-de-questoes" id="questao1" data-correta="1">
+<div class="container-de-questoes"  data-correta="fvff">
 
-<p class="enunciado"> Qual a cor do cavalo Branco de napoleão </p>
+<p class="enunciado"> Sobre a cor do cavalo branco de napoleão </p>
 
-<p class="alterantiva" data-alternativa="1"> Branco </p>
-<p class="alterantiva" data-alternativa="2"> Azul </p>
-<p class="alterantiva" data-alternativa="3"> Preto </p>
-<p class="alterantiva" data-alternativa="4"> Amarelo </p>
+<p class="vf-alternativa" data-vf-1="f" id="vf1"> O cavalo é verde 
+<select id="sentenca1r"><option value=" "></option><option value="v">Verdadeiro</option> <option value="f">Falso</option></select> 
+</p>
+
+<p class="vf-alternativa" data-vf-2="v" id="vf2"> O cavalo é branco
+<select id="sentenca2r"><option value=" "></option><option value="v">Verdadeiro</option> <option value="f">Falso</option></select> 
+</p>
+
+<p class="vf-alternativa" data-vf-3="f" id="vf3"> O cavalo é preto
+<select id="sentenca3r"><option value=" "></option><option value="v">Verdadeiro</option> <option value="f">Falso</option></select> 
+</p>
+
+<p class="vf-alternativa" data-vf-4="f" id="vf4"> O calvo é azul
+<select id="sentenca4r"><option value=" "></option><option value="v">Verdadeiro</option> <option value="f">Falso</option></select> 
+</p>
+
 
 
 <div class="botao-responder">RESPONDER</div>
@@ -19,37 +31,61 @@
 
 
 <script>
+$(document).ready(function(){
 $(".botao-responder").off();
-$(".alterantiva").click(function(e){
 
-$(".alterantiva").removeClass('alternativa-marcada');
-$(".alterantiva").css('opacity',0.5);
-$(this).addClass('alternativa-marcada');
-$(this).css('opacity',1);
+$( ".vf-alternativa" ).change(function() {
+alternativa1 = $("#sentenca1r").val();
+alternativa2 = $("#sentenca2r").val();
+alternativa3 = $("#sentenca3r").val();
+alternativa4 = $("#sentenca4r").val();
+respostaFinal = alternativa1+alternativa2+alternativa3+alternativa4;
+respostaDaQuestaoInteira = $(".botao-responder").closest(".container-de-questoes").attr("data-correta");
+respostaDaQuestao1 = respostaDaQuestaoInteira.substring(0,1);
+respostaDaQuestao2 = respostaDaQuestaoInteira.substring(1,2);
+respostaDaQuestao3 = respostaDaQuestaoInteira.substring(2,3);
+respostaDaQuestao4 = respostaDaQuestaoInteira.substring(3,4);
 
-
-$(".botao-responder:first").addClass('botao-marcado');
+if(alternativa1!=" " && alternativa2!=" " && alternativa3!=" " && alternativa4!=" "  ){
+$(".botao-responder").addClass('botao-marcado');
 $(".botao-responder").on();
-
-
-
-respostaSelecionada =  $(this).attr('data-alternativa');
-respostaCorreta = $(".botao-responder").closest(".container-de-questoes").attr('data-correta');
+}
 
 });
-
 
 $(".botao-responder").click(function(){
-	$(".feedbacks").hide();
-	if(respostaSelecionada==respostaCorreta){
+if(alternativa1==respostaDaQuestao1){
+$("#vf1").css("background-color","#2BBBAD");
+}
+else{
+$("#vf1").css("background-color","#E95354");
+}
 
-		$(".feedback-correto").fadeIn("slow");
-	}
-	else{
-		$(".feedback-incorreto").fadeIn("slow");
-	}
+if(alternativa2==respostaDaQuestao2){
+$("#vf2").css("background-color","#2BBBAD");
+}
+else{
+$("#vf2").css("background-color","#E95354");
+}
 
+if(alternativa3==respostaDaQuestao3){
+$("#vf3").css("background-color","#2BBBAD");
+}
+else{
+$("#vf3").css("background-color","#E95354");
+}
+
+if(alternativa4==respostaDaQuestao4){
+$("#vf4").css("background-color","#2BBBAD");
+}
+else{
+$("#vf4").css("background-color","#E95354");
+}
 });
+
+});	
+
+
 
 </script>
 
@@ -95,7 +131,7 @@ padding: 10px;
 }
 
 .botao-marcado{
-background-color: #2BBBAD;
+background-color: #0094A8 ;
 cursor: pointer;
 
 }
@@ -104,5 +140,26 @@ cursor: pointer;
 	padding: 10px;
 	background-color: #F7CF4D;
 	opacity: 1.0;
+}
+
+.vf-alternativa{
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;	
+
+}
+
+.container-de-questoes{
+	max-width: 100%;
+}
+
+
+select{
+
+	margin-left: 10px;
+	font-family: 'Varela Round', sans-serif;
+	right: 0px;
+	float: right;
+	margin-left: 5px;
 }
 </style>

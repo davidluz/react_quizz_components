@@ -1,0 +1,108 @@
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<div class="container-de-questoes" id="questao1" data-correta="1">
+
+<p class="enunciado"> Qual a cor do cavalo Branco de napoleão </p>
+
+<p class="alterantiva" data-alternativa="1"> Branco </p>
+<p class="alterantiva" data-alternativa="2"> Azul </p>
+<p class="alterantiva" data-alternativa="3"> Preto </p>
+<p class="alterantiva" data-alternativa="4"> Amarelo </p>
+
+
+<div class="botao-responder">RESPONDER</div>
+
+<div class="feedback-correto feedbacks"> Correto !</div>
+<div class="feedback-incorreto feedbacks"> Incorreto! </div>
+	
+</div>
+
+
+<script>
+$(".botao-responder").off();
+$(".alterantiva").click(function(e){
+
+$(".alterantiva").removeClass('alternativa-marcada');
+$(".alterantiva").css('opacity',0.5);
+$(this).addClass('alternativa-marcada');
+$(this).css('opacity',1);
+
+
+$(".botao-responder:first").addClass('botao-marcado');
+$(".botao-responder").on();
+
+
+
+respostaSelecionada =  $(this).attr('data-alternativa');
+respostaCorreta = $(".botao-responder").closest(".container-de-questoes").attr('data-correta');
+
+});
+
+
+$(".botao-responder").click(function(){
+	$(".feedbacks").hide();
+	if(respostaSelecionada==respostaCorreta){
+
+		$(".feedback-correto").fadeIn("slow");
+	}
+	else{
+		$(".feedback-incorreto").fadeIn("slow");
+	}
+
+});
+
+</script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+.botao-responder{
+background-color: #9E9E9E;
+padding: 10px;
+width: 100px;
+text-align: center;
+font-size: 14px;
+color: white;
+}
+
+
+.container-de-questoes{
+font-family: 'Varela Round', sans-serif;
+}
+    
+.alterantiva{
+cursor: pointer;
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;
+}
+
+.feedback-correto{
+	background-color: #0094A8;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+
+.feedback-incorreto{
+	background-color: #E95354;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+.feedbacks{
+	margin-top: 10px;
+}
+
+.botao-marcado{
+background-color: #2BBBAD;
+cursor: pointer;
+
+}
+.alternativa-marcada{
+	
+	padding: 10px;
+	background-color: #F7CF4D;
+	opacity: 1.0;
+}
+</style>

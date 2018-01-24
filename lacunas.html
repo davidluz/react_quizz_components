@@ -5,16 +5,66 @@
 <p class="enunciado"> Complete com os termos faltantes </p>
 
 <p>
-	Este é um exemplo de uma questão de questão de preencher
-	<select id="lacuna1"><option value=" ">
-	</option><option value="0">Lacuna</option> 
-	<option value="2">Verdadeiro ou falso</option>
+	Preencha aqui com a lacuna 1:
+	<select id="lacuna1" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
 	</select> 
 	Preencha aqui com a lacuna 2:
+	<select id="lacuna2" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 
 	Preencha aqui com a lacuna 3:
+	<select id="lacuna3" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 
 	Preencha aqui com a lacuna 4:
+	<select id="lacuna4" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 
 	Preencha aqui com a lacuna 5:
+	<select id="lacuna5" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 
 	Preencha aqui com a lacuna 6:
+	<select id="lacuna6" class="lacunas">
+	<option value=" "> </option> 
+	<option value="1">1</option> 
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	</select> 
 </p>
 
 <div class="botao-responder">RESPONDER</div>
@@ -27,72 +77,54 @@
 
 <script>
 $(document).ready(function(){
-$(".botao-responder").off();
 
-$( ".vf-alternativa" ).change(function() {
-alternativa1 = $("#sentenca1r").val();
-alternativa2 = $("#sentenca2r").val();
-alternativa3 = $("#sentenca3r").val();
-alternativa4 = $("#sentenca4r").val();
-respostaFinal = alternativa1+alternativa2+alternativa3+alternativa4;
-respostaDaQuestaoInteira = $(".botao-responder").closest(".container-de-questoes").attr("data-correta");
-respostaDaQuestao1 = respostaDaQuestaoInteira.substring(0,1);
-respostaDaQuestao2 = respostaDaQuestaoInteira.substring(1,2);
-respostaDaQuestao3 = respostaDaQuestaoInteira.substring(2,3);
-respostaDaQuestao4 = respostaDaQuestaoInteira.substring(3,4);
+resposta1 = "1";
+resposta2 = "2";
+resposta3 = "3";
+resposta4 = "4";
+resposta5 = "5";
+resposta6 = "6";
 
-if(alternativa1!=" " && alternativa2!=" " && alternativa3!=" " && alternativa4!=" "  ){
-$(".botao-responder").addClass('botao-marcado');
-$(".botao-responder").on();
-}
+
+
+
+$(".lacunas").change(function(){
+
+s1 = $("#lacuna1").val();
+s2 = $("#lacuna2").val();
+s3 = $("#lacuna3").val();
+s4 = $("#lacuna4").val();
+s5 = $("#lacuna5").val();
+s6 = $("#lacuna6").val();
+
+	if(s1!=" "&&s2!=" "&&s3!=" "&&s4!=" "&&s5!=" "&&s6!=" "){
+		$(".botao-responder").on;
+		$(".botao-responder").addClass("botao-marcado");
+
+	}
 
 });
-
-$(".botao-responder").click(function(){
-if(alternativa1==respostaDaQuestao1){
-$("#vf1").css("background-color","#2BBBAD");
-}
-else{
-$("#vf1").css("background-color","#E95354");
-}
-
-if(alternativa2==respostaDaQuestao2){
-$("#vf2").css("background-color","#2BBBAD");
-}
-else{
-$("#vf2").css("background-color","#E95354");
-}
-
-if(alternativa3==respostaDaQuestao3){
-$("#vf3").css("background-color","#2BBBAD");
-}
-else{
-$("#vf3").css("background-color","#E95354");
-}
-
-if(alternativa4==respostaDaQuestao4){
-$("#vf4").css("background-color","#2BBBAD");
-}
-else{
-$("#vf4").css("background-color","#E95354");
-}
-
-if(respostaDaQuestaoInteira==respostaFinal){
-$(".feedbacks").hide();
-$(".feedback-correto").fadeIn();
-}
-else{
-$(".feedbacks").hide();
-$(".feedback-incorreto").fadeIn();	
-}
-});
-
 
 
 });	
 
+$(".botao-responder").click(function(){
 
 
+if(s1==resposta1&&s2==resposta2&&s3==resposta3&&s4==resposta4&&s5==resposta5&&s6==resposta6){
+		$(".feedbacks").hide();
+		$(".feedback-correto").fadeIn("Slow");
+
+	}
+else{
+			$(".feedbacks").hide();
+		$(".feedback-incorreto").fadeIn("Slow");	
+		}
+
+
+});
+
+$("")
 </script>
 
 <style>

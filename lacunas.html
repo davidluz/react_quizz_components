@@ -1,0 +1,170 @@
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<div class="container-de-questoes lacunas"  data-correta="fvff">
+
+<p class="enunciado"> Complete com os termos faltantes </p>
+
+<p>
+	Este é um exemplo de uma questão de questão de preencher
+	<select id="lacuna1"><option value=" ">
+	</option><option value="0">Lacuna</option> 
+	<option value="2">Verdadeiro ou falso</option>
+	</select> 
+	Preencha aqui com a lacuna 2:
+	Preencha aqui com a lacuna 3:
+	Preencha aqui com a lacuna 4:
+	Preencha aqui com a lacuna 5:
+	Preencha aqui com a lacuna 6:
+</p>
+
+<div class="botao-responder">RESPONDER</div>
+
+<div class="feedback-correto feedbacks"> Você acertou todas as questões !</div>
+<div class="feedback-incorreto feedbacks"> Você errou uma das questões! </div>
+	
+</div>
+
+
+<script>
+$(document).ready(function(){
+$(".botao-responder").off();
+
+$( ".vf-alternativa" ).change(function() {
+alternativa1 = $("#sentenca1r").val();
+alternativa2 = $("#sentenca2r").val();
+alternativa3 = $("#sentenca3r").val();
+alternativa4 = $("#sentenca4r").val();
+respostaFinal = alternativa1+alternativa2+alternativa3+alternativa4;
+respostaDaQuestaoInteira = $(".botao-responder").closest(".container-de-questoes").attr("data-correta");
+respostaDaQuestao1 = respostaDaQuestaoInteira.substring(0,1);
+respostaDaQuestao2 = respostaDaQuestaoInteira.substring(1,2);
+respostaDaQuestao3 = respostaDaQuestaoInteira.substring(2,3);
+respostaDaQuestao4 = respostaDaQuestaoInteira.substring(3,4);
+
+if(alternativa1!=" " && alternativa2!=" " && alternativa3!=" " && alternativa4!=" "  ){
+$(".botao-responder").addClass('botao-marcado');
+$(".botao-responder").on();
+}
+
+});
+
+$(".botao-responder").click(function(){
+if(alternativa1==respostaDaQuestao1){
+$("#vf1").css("background-color","#2BBBAD");
+}
+else{
+$("#vf1").css("background-color","#E95354");
+}
+
+if(alternativa2==respostaDaQuestao2){
+$("#vf2").css("background-color","#2BBBAD");
+}
+else{
+$("#vf2").css("background-color","#E95354");
+}
+
+if(alternativa3==respostaDaQuestao3){
+$("#vf3").css("background-color","#2BBBAD");
+}
+else{
+$("#vf3").css("background-color","#E95354");
+}
+
+if(alternativa4==respostaDaQuestao4){
+$("#vf4").css("background-color","#2BBBAD");
+}
+else{
+$("#vf4").css("background-color","#E95354");
+}
+
+if(respostaDaQuestaoInteira==respostaFinal){
+$(".feedbacks").hide();
+$(".feedback-correto").fadeIn();
+}
+else{
+$(".feedbacks").hide();
+$(".feedback-incorreto").fadeIn();	
+}
+});
+
+
+
+});	
+
+
+
+</script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+.botao-responder{
+background-color: #9E9E9E;
+padding: 10px;
+width: 100px;
+text-align: center;
+font-size: 14px;
+color: white;
+}
+
+
+.container-de-questoes{
+font-family: 'Varela Round', sans-serif;
+}
+    
+.alterantiva{
+cursor: pointer;
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;
+}
+
+.feedback-correto{
+	background-color: #0094A8;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+
+.feedback-incorreto{
+	background-color: #E95354;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+.feedbacks{
+	margin-top: 10px;
+}
+
+.botao-marcado{
+background-color: #0094A8 ;
+cursor: pointer;
+
+}
+.alternativa-marcada{
+	
+	padding: 10px;
+	background-color: #F7CF4D;
+	opacity: 1.0;
+}
+
+.vf-alternativa{
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;	
+
+}
+
+.container-de-questoes{
+	max-width: 100%;
+}
+
+
+.lacunas select{
+
+	margin-left: 10px;
+	font-family: 'Varela Round', sans-serif;
+	margin-left: 5px;
+}
+</style>
+

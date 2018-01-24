@@ -1,0 +1,158 @@
+<script src="js/jquery-3.3.1.min.js"></script>
+
+<div class="container-de-questoes lacunas"  data-correta="fvff">
+
+<p class="enunciado"> Complete com os termos faltantes </p>
+
+<p>
+	Preencha aqui com a lacuna 1:
+	<input type="text" id="lacunat1" value="1" class="lacunast">
+	Preencha aqui com a lacuna 2:
+	<input type="text" id="lacunat2" value="2" class="lacunast">
+	Preencha aqui com a lacuna 3:
+	<input type="text" id="lacunat3" value="3" class="lacunast">
+	Preencha aqui com a lacuna 4:
+	<input type="text" id="lacunat4" value="4" class="lacunast">
+	Preencha aqui com a lacuna 5:
+	<input type="text" id="lacunat5" value="5" class="lacunast">
+	Preencha aqui com a lacuna 6:
+	<input type="text" id="lacunat6" value="6" class="lacunast">
+	
+</p>
+
+<div class="botao-responder">RESPONDER</div>
+
+<div class="feedback-correto feedbacks"> Você acertou todas as questões !</div>
+<div class="feedback-incorreto feedbacks"> Você errou uma das questões! </div>
+	
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+resposta1 = "1";
+resposta2 = "2";
+resposta3 = "3";
+resposta4 = "4";
+resposta5 = "5";
+resposta6 = "6";
+
+
+
+
+$(".lacunas").change(function(){
+
+s1 = $("#lacunat1").val();
+s2 = $("#lacunat2").val();
+s3 = $("#lacunat3").val();
+s4 = $("#lacunat4").val();
+s5 = $("#lacunat5").val();
+s6 = $("#lacunat6").val();
+
+	if(s1!=" "&&s2!=" "&&s3!=" "&&s4!=" "&&s5!=" "&&s6!=" "){
+		$(".botao-responder").on;
+		$(".botao-responder").addClass("botao-marcado");
+
+	}
+
+});
+
+
+});	
+
+$(".botao-responder").click(function(){
+
+
+if(s1==resposta1&&s2==resposta2&&s3==resposta3&&s4==resposta4&&s5==resposta5&&s6==resposta6){
+		$(".feedbacks").hide();
+		$(".feedback-correto").fadeIn("Slow");
+
+	}
+else{
+			$(".feedbacks").hide();
+		$(".feedback-incorreto").fadeIn("Slow");	
+		}
+
+
+});
+
+$("")
+</script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+.botao-responder{
+background-color: #9E9E9E;
+padding: 10px;
+width: 100px;
+text-align: center;
+font-size: 14px;
+color: white;
+}
+
+
+.container-de-questoes{
+font-family: 'Varela Round', sans-serif;
+}
+    
+.alterantiva{
+cursor: pointer;
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;
+}
+
+.feedback-correto{
+	background-color: #0094A8;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+
+.feedback-incorreto{
+	background-color: #E95354;
+	color: white;
+	padding: 10px;
+	display: none;
+}
+.feedbacks{
+	margin-top: 10px;
+}
+
+.botao-marcado{
+background-color: #0094A8 ;
+cursor: pointer;
+
+}
+.alternativa-marcada{
+	
+	padding: 10px;
+	background-color: #F7CF4D;
+	opacity: 1.0;
+}
+
+.vf-alternativa{
+margin-top: 10px;
+border: solid 1px #d3d3d3;
+padding: 10px;	
+
+}
+
+.container-de-questoes{
+	max-width: 100%;
+}
+
+
+.lacunas select{
+
+	margin-left: 10px;
+	font-family: 'Varela Round', sans-serif;
+	margin-left: 5px;
+}
+.lacunast{
+	width: 80px;
+}
+</style>
+
